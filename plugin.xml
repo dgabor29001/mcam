@@ -98,7 +98,7 @@
         <source-file src="src/android/xml/provider_paths.xml" target-dir="res/xml" />
 
         <source-file src="src/android/layout/mcam_main.xml" target-dir="res/layout"/>
-        <source-file src="src/android/layout-land/mcam_main.xml" target-dir="res/layout"/>
+        <source-file src="src/android/layout-land/mcam_main.xml" target-dir="res/layout-land"/>
         <source-file src="src/android/layout/mcam_include_gallery.xml" target-dir="res/layout"/>
         <source-file src="src/android/layout/mcam_gallery_item.xml" target-dir="res/layout"/>
 
