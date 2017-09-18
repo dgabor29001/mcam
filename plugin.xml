@@ -68,8 +68,15 @@
         </config-file>
         <config-file target="AndroidManifest.xml" parent="/*">
             <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+            <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
         </config-file>
         <config-file target="AndroidManifest.xml" parent="application">
+
+        <activity android:name="org.apache.cordova.camera.CustomCamera" 
+                        android:theme="@android:style/Theme.Holo.Light.NoActionBar"
+                        android:label="@string/app_name"
+                        android:screenOrientation="portrait" /> 
+
           <provider
               android:name="android.support.v4.content.FileProvider"
               android:authorities="${applicationId}.provider"
@@ -81,17 +88,40 @@
           </provider>
         </config-file>
 
+        <source-file src="src/android/CustomCamera.java" target-dir="src/org/apache/cordova/camera" />
+        <source-file src="src/android/GalleryItemAdapter.java" target-dir="src/org/apache/cordova/camera" />
+        <source-file src="src/android/SimpleOrientationListener.java" target-dir="src/org/apache/cordova/camera" />
         <source-file src="src/android/CameraLauncher.java" target-dir="src/org/apache/cordova/camera" />
         <source-file src="src/android/CordovaUri.java" target-dir="src/org/apache/cordova/camera" />
         <source-file src="src/android/FileHelper.java" target-dir="src/org/apache/cordova/camera" />
         <source-file src="src/android/ExifHelper.java" target-dir="src/org/apache/cordova/camera" />
         <source-file src="src/android/xml/provider_paths.xml" target-dir="res/xml" />
 
+        <source-file src="src/android/layout/mcam_main.xml" target-dir="res/layout"/>
+        <source-file src="src/android/layout-land/mcam_main.xml" target-dir="res/layout"/>
+        <source-file src="src/android/layout/mcam_include_gallery.xml" target-dir="res/layout"/>
+        <source-file src="src/android/layout/mcam_gallery_item.xml" target-dir="res/layout"/>
+
+        <source-file src="src/android/drawable/ic_camera.xml" target-dir="res/drawable" />
+        <source-file src="src/android/drawable/ic_flash_auto.xml" target-dir="res/drawable" />
+        <source-file src="src/android/drawable/ic_flash_off.xml" target-dir="res/drawable" />
+        <source-file src="src/android/drawable/ic_flash_on.xml" target-dir="res/drawable" />
+        <source-file src="src/android/drawable/ic_aspect_ratio.xml" target-dir="res/drawable" />
+        <source-file src="src/android/drawable/ic_switch_camera.xml" target-dir="res/drawable" />
+
+        <source-file src="src/android/menu/main.xml" target-dir="res/menu" />
+                
         <js-module src="www/CameraPopoverHandle.js" name="CameraPopoverHandle">
             <clobbers target="CameraPopoverHandle" />
           </js-module>
 
+        <resource-file src="src/android/libs/library.aar" target="libs/library.aar" />
+        
         <framework src="com.android.support:support-v4:24.1.1+" />
+        <framework src="com.android.support:design:24.1.1+" />
+        <framework src="com.android.support:recyclerview-v7:24.1.1+" />
+        <framework src="com.github.bumptech.glide:glide:3.7.0" />
+        <framework src="src/android/libs/library.gradle" custom="true" type="gradleReference" />
 
       </platform>
 
