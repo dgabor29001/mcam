@@ -56,8 +56,13 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+import java.util.Locale;
 import java.util.Set;
 
 
@@ -129,13 +134,13 @@ public class CustomCamera extends AppCompatActivity implements
         FLASH_ICONS = {
             resources.getIdentifier("ic_flash_auto", "drawable", package_name),
             resources.getIdentifier("ic_flash_off", "drawable", package_name),
-            resources.getIdentifier("ic_flash_on", "drawable", package_name)
+            resources.getIdentifier("ic_flash_on", "drawable", package_name),
         };
          
         FLASH_TITLES = {
             resources.getIdentifier("flash_auto", "string", package_name),
             resources.getIdentifier("flash_off", "string", package_name),
-            resources.getIdentifier("flash_on", "string", package_name)
+            resources.getIdentifier("flash_on", "string", package_name),
         };
 
         setContentView(resources.getIdentifier("mcam_main", "layout", package_name));//setContentView(R.layout.mcam_main);
