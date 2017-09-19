@@ -87,7 +87,6 @@ public class CustomCamera extends AppCompatActivity implements
             CameraView.FLASH_ON,
     };
     /*
-
     private String package_name = getApplication().getPackageName();
     private Resources resources = getApplication().getResources();
 
