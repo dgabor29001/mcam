@@ -26,6 +26,7 @@ import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.database.Cursor;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
@@ -299,7 +300,7 @@ public class CustomCamera extends AppCompatActivity implements
             return true;
         }
         return super.onOptionsItemSelected(item);
-        
+
     }
 
     private Handler getBackgroundHandler() {
