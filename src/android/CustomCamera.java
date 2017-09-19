@@ -350,7 +350,7 @@ public class CustomCamera extends AppCompatActivity implements
         Cursor cursor;
         String absolutePathOfImage;
         int column_index_data;
-        ArrayList<String> listOfAllImages = new ArrayList<>();
+        ArrayList<String> listOfAllImages = new ArrayList<String>();
 
         cursor = getApplicationContext().getContentResolver().query(
                 MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
