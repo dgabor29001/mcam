@@ -130,9 +130,9 @@ public class CustomCamera extends AppCompatActivity implements
         };
          
         private static final int[] FLASH_TITLES = {
-            "Flash auto",
-            "Flash off",
-            "Flash on"
+            resources.getIdentifier("flash_auto", "string", package_name),
+            resources.getIdentifier("flash_off", "string", package_name),
+            resources.getIdentifier("flash_on", "string", package_name)
         };
 
         setContentView(resources.getIdentifier("mcam_main", "layout", package_name));//setContentView(R.layout.mcam_main);
@@ -204,10 +204,10 @@ public class CustomCamera extends AppCompatActivity implements
         } else if (ActivityCompat.shouldShowRequestPermissionRationale(this,
                 Manifest.permission.CAMERA)) {
             ConfirmationDialogFragment
-                    .newInstance("This app demonstrates the usage of CameraView. In order to do that, it needs permission to access camera.",
+                    .newInstance(resources.getIdentifier("camera_permission_confirmation", "string", package_name),
                             new String[]{Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE},
                             REQUEST_CAMERA_PERMISSION,
-                            "Camera app cannot do anything without camera permission.")
+                            resources.getIdentifier("camera_permission_not_granted", "string", package_name))
                     .show(getSupportFragmentManager(), FRAGMENT_DIALOG);
         } else {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE},
@@ -244,7 +244,7 @@ public class CustomCamera extends AppCompatActivity implements
                     throw new RuntimeException("Error on requesting camera permission.");
                 }
                 if (grantResults[0] != PackageManager.PERMISSION_GRANTED) {
-                    Toast.makeText(this, "Camera app cannot do anything without camera permission.",
+                    Toast.makeText(this, resources.getIdentifier("camera_permission_not_granted", "string", package_name),
                             Toast.LENGTH_SHORT).show();
                 }
                 // No need to start camera here; it is handled by onResume
