@@ -225,13 +225,6 @@ public class CustomCamera extends AppCompatActivity implements
             mCameraView.start();
             loadGallery();
 
-            //start custom ratios
-            final Set<AspectRatio> ratios = mCameraView.getSupportedAspectRatios();
-            if (ratios != null && ratios.size() != 0) {
-                AspectRatio[] aRatios = ratios.toArray(new AspectRatio[ratios.size()]);
-                Arrays.sort(aRatios);
-                mCameraView.setAspectRatio(aRatios[aRatios.length-1]);
-            }
             mCameraView.addCallback(mCallback);
             //end custom ratio
 
@@ -324,6 +317,25 @@ public class CustomCamera extends AppCompatActivity implements
         @Override
         public void onCameraOpened(CameraView cameraView) {
             Log.d(TAG, "onCameraOpened");
+            //start custom ratios
+            Set<AspectRatio> ratios = mCameraView.getSupportedAspectRatios();
+            if (ratios != null && ratios.size() != 0) {
+                AspectRatio[] aRatios = ratios.toArray(new AspectRatio[ratios.size()]);
+                Arrays.sort(aRatios);
+
+                /*
+                if (Arrays.asList(aRatios).contains(AspectRatio.parse("16:9"))) {
+                    mCameraView.setAspectRatio(AspectRatio.parse("16:9"));
+                }
+                */
+
+                try {
+                    if(mCameraView.getAspectRatio() != aRatios[aRatios.length - 1])
+                        mCameraView.setAspectRatio(aRatios[aRatios.length - 1]);
+                } catch (Exception e) {
+                    Log.e(TAG, "onResume: ", e);
+                }
+            }
         }
 
         @Override
