@@ -204,10 +204,10 @@ public class CustomCamera extends AppCompatActivity implements
         } else if (ActivityCompat.shouldShowRequestPermissionRationale(this,
                 Manifest.permission.CAMERA)) {
             ConfirmationDialogFragment
-                    .newInstance(R.string.camera_permission_confirmation,
+                    .newInstance(resources.getIdentifier("camera_permission_confirmation", "string", package_name),
                             new String[]{Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE},
                             REQUEST_CAMERA_PERMISSION,
-                            R.string.camera_permission_not_granted)
+                            resources.getIdentifier("camera_permission_not_granted", "string", package_name))
                     .show(getSupportFragmentManager(), FRAGMENT_DIALOG);
         } else {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE},
@@ -244,7 +244,7 @@ public class CustomCamera extends AppCompatActivity implements
                     throw new RuntimeException("Error on requesting camera permission.");
                 }
                 if (grantResults[0] != PackageManager.PERMISSION_GRANTED) {
-                    Toast.makeText(this, R.string.camera_permission_not_granted,
+                    Toast.makeText(this, resources.getIdentifier("camera_permission_not_granted", "string", package_name),
                             Toast.LENGTH_SHORT).show();
                 }
                 // No need to start camera here; it is handled by onResume
