@@ -109,9 +109,9 @@
         <source-file src="src/android/drawable/ic_aspect_ratio.xml" target-dir="res/drawable" />
         <source-file src="src/android/drawable/ic_switch_camera.xml" target-dir="res/drawable" />
         
-        <source-file src="src/android/values/strings.xml" target-dir="res/values/stringsMcam.xml" />
-        <source-file src="src/android/values/dimens.xml" target-dir="res/values/dimensMcam.xml" />
-        <source-file src="src/android/values-w820dp/dimens.xml" target-dir="res/values-w820dp/dimensMcam.xml" />
+        <source-file src="src/android/values/mcam_strings.xml" target-dir="res/values" />
+        <source-file src="src/android/values/mcam_dimens.xml" target-dir="res/values" />
+        <source-file src="src/android/values-w820dp/mcam_dimens.xml" target-dir="res/values-w820dp" />
 
         <source-file src="src/android/menu/main.xml" target-dir="res/menu" />
                 
