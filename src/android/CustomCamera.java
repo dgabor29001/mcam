@@ -17,6 +17,7 @@
 package org.apache.cordova.camera;
 
 import android.Manifest;
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -287,19 +288,18 @@ public class CustomCamera extends AppCompatActivity implements
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
 
-            case resources.getIdentifier("switch_flash", "id", package_name):
-                if (mCameraView != null) {
-                    mCurrentFlash = (mCurrentFlash + 1) % FLASH_OPTIONS.length;
-                    item.setTitle(FLASH_TITLES[mCurrentFlash]);
-                    item.setIcon(FLASH_ICONS[mCurrentFlash]);
-                    mCameraView.setFlash(FLASH_OPTIONS[mCurrentFlash]);
-                }
-                return true;
-
+        if(item.getItemId() == resources.getIdentifier("switch_flash", "id", package_name)){
+            if (mCameraView != null) {
+                mCurrentFlash = (mCurrentFlash + 1) % FLASH_OPTIONS.length;
+                item.setTitle(FLASH_TITLES[mCurrentFlash]);
+                item.setIcon(FLASH_ICONS[mCurrentFlash]);
+                mCameraView.setFlash(FLASH_OPTIONS[mCurrentFlash]);
+            }
+            return true;
         }
         return super.onOptionsItemSelected(item);
+        
     }
 
     private Handler getBackgroundHandler() {
