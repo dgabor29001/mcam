@@ -79,7 +79,10 @@ public class CustomCamera extends AppCompatActivity implements
             CameraView.FLASH_OFF,
             CameraView.FLASH_ON,
     };
-   
+    
+    private static int[] FLASH_ICONS;
+
+    private static int[] FLASH_TITLES;
 
     private int mCurrentFlash;
 
@@ -123,13 +126,13 @@ public class CustomCamera extends AppCompatActivity implements
         package_name = getApplication().getPackageName();
         resources = getApplication().getResources();
         
-        private static final int[] FLASH_ICONS = {
+        FLASH_ICONS = {
             resources.getIdentifier("ic_flash_auto", "drawable", package_name),
             resources.getIdentifier("ic_flash_off", "drawable", package_name),
             resources.getIdentifier("ic_flash_on", "drawable", package_name)
         };
          
-        private static final int[] FLASH_TITLES = {
+        FLASH_TITLES = {
             resources.getIdentifier("flash_auto", "string", package_name),
             resources.getIdentifier("flash_off", "string", package_name),
             resources.getIdentifier("flash_on", "string", package_name)
