@@ -79,15 +79,16 @@ public class CustomCamera extends AppCompatActivity implements
     private static final int REQUEST_CAMERA_PERMISSION = 1;
 
     private static final String FRAGMENT_DIALOG = "dialog";
-
-    private String package_name = getApplication().getPackageName();
-    private Resources resources = getApplication().getResources();
    
     private static final int[] FLASH_OPTIONS = {
             CameraView.FLASH_AUTO,
             CameraView.FLASH_OFF,
             CameraView.FLASH_ON,
     };
+    /*
+
+    private String package_name = getApplication().getPackageName();
+    private Resources resources = getApplication().getResources();
 
     private static final int[] FLASH_ICONS = {
             resources.getIdentifier("ic_flash_auto", "drawable", package_name),
@@ -100,9 +101,8 @@ public class CustomCamera extends AppCompatActivity implements
             resources.getIdentifier("flash_off", "string", package_name),
             resources.getIdentifier("flash_on", "string", package_name),
     };
-
-    /*
-    
+    */
+  
     private String package_name;
     private Resources resources;
 
@@ -112,10 +112,10 @@ public class CustomCamera extends AppCompatActivity implements
             CameraView.FLASH_ON,
     };
     
-    private static int[] FLASH_ICONS;
+    private int[] FLASH_ICONS;
 
-    private static int[] FLASH_TITLES;
-    */
+    private int[] FLASH_TITLES;
+  
 
     private int mCurrentFlash;
 
@@ -152,22 +152,22 @@ public class CustomCamera extends AppCompatActivity implements
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         //end remove title
 
-        /*
+        
         package_name = getApplication().getPackageName();
         resources = getApplication().getResources();
         
-        FLASH_ICONS = {
+        FLASH_ICONS = new int[] {
             resources.getIdentifier("ic_flash_auto", "drawable", package_name),
             resources.getIdentifier("ic_flash_off", "drawable", package_name),
             resources.getIdentifier("ic_flash_on", "drawable", package_name),
         };
          
-        FLASH_TITLES = {
+        FLASH_TITLES = new int[] {
             resources.getIdentifier("flash_auto", "string", package_name),
             resources.getIdentifier("flash_off", "string", package_name),
             resources.getIdentifier("flash_on", "string", package_name),
         };
-        */
+        
 
         setContentView(resources.getIdentifier("mcam_main", "layout", package_name));//setContentView(R.layout.mcam_main);
 
