@@ -80,8 +80,8 @@ public class CustomCamera extends AppCompatActivity implements
 
     private static final String FRAGMENT_DIALOG = "dialog";
 
-    private final String package_name = getApplication().getPackageName();
-    private final Resources resources = getApplication().getResources();
+    private String package_name = getApplication().getPackageName();
+    private Resources resources = getApplication().getResources();
    
     private static final int[] FLASH_OPTIONS = {
             CameraView.FLASH_AUTO,
@@ -102,6 +102,7 @@ public class CustomCamera extends AppCompatActivity implements
     };
 
     /*
+    
     private String package_name;
     private Resources resources;
 
@@ -126,9 +127,6 @@ public class CustomCamera extends AppCompatActivity implements
 
     private RecyclerView mGallery;
     private GalleryItemAdapter adapter;
-
-    private String package_name;
-    private Resources resources;
 
     private View.OnClickListener mOnClickListener = new View.OnClickListener() {
         @Override
@@ -170,7 +168,7 @@ public class CustomCamera extends AppCompatActivity implements
             resources.getIdentifier("flash_on", "string", package_name),
         };
         */
-        
+
         setContentView(resources.getIdentifier("mcam_main", "layout", package_name));//setContentView(R.layout.mcam_main);
 
         mCameraView = (CameraView) findViewById(resources.getIdentifier("camera", "id", package_name));//mCameraView = (CameraView) findViewById(R.id.camera);
