@@ -82,29 +82,7 @@ public class CustomCamera extends AppCompatActivity implements
     private static final int REQUEST_CAMERA_PERMISSION = 1;
 
     private static final String FRAGMENT_DIALOG = "dialog";
-   
-    private static final int[] FLASH_OPTIONS = {
-            CameraView.FLASH_AUTO,
-            CameraView.FLASH_OFF,
-            CameraView.FLASH_ON,
-    };
-    /*
-    private String package_name = getApplication().getPackageName();
-    private Resources resources = getApplication().getResources();
-
-    private static final int[] FLASH_ICONS = {
-            resources.getIdentifier("ic_flash_auto", "drawable", package_name),
-            resources.getIdentifier("ic_flash_off", "drawable", package_name),
-            resources.getIdentifier("ic_flash_on", "drawable", package_name),
-    };
-
-    private static final int[] FLASH_TITLES = {
-            resources.getIdentifier("flash_auto", "string", package_name),
-            resources.getIdentifier("flash_off", "string", package_name),
-            resources.getIdentifier("flash_on", "string", package_name),
-    };
-    */
-  
+     
     private String package_name;
     private Resources resources;
 
@@ -133,12 +111,11 @@ public class CustomCamera extends AppCompatActivity implements
     private View.OnClickListener mOnClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            switch (v.getId()) {
-                case R.id.take_picture:
-                    if (mCameraView != null) {
-                        mCameraView.takePicture();
-                    }
-                    break;
+
+            if(v.getId() == resources.getIdentifier("take_picture", "id", package_name)){
+                if (mCameraView != null) {
+                    mCameraView.takePicture();
+                }
             }
         }
     };
