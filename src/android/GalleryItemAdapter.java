@@ -48,7 +48,7 @@ public class GalleryItemAdapter extends RecyclerView.Adapter<GalleryItemAdapter.
 
         public MyViewHolder(View view) {
             super(view);
-            thumb_image=(ImageView) view.findViewById(R.id.custom_image);
+            thumb_image=(ImageView) view.findViewById(context.getResources().getIdentifier("custom_image", "id", context.getPackageName()));//view.findViewById(R.id.custom_image);
             thumb_image.setVisibility(View.VISIBLE);
         }
 
@@ -80,7 +80,8 @@ public class GalleryItemAdapter extends RecyclerView.Adapter<GalleryItemAdapter.
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.mcam_gallery_item, parent, false);
+                .inflate(context.getResources().getIdentifier("mcam_gallery_item", "layout", context.getPackageName()), parent, false);
+                //.inflate(R.layout.mcam_gallery_item, parent, false);
 
         return new MyViewHolder(itemView);
     }
