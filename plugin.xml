@@ -109,9 +109,25 @@
         <source-file src="src/android/drawable/ic_aspect_ratio.xml" target-dir="res/drawable" />
         <source-file src="src/android/drawable/ic_switch_camera.xml" target-dir="res/drawable" />
 
-        <source-file src="src/android/values/strings.xml" target-dir="res/values" />
-        <source-file src="src/android/values/dimens.xml" target-dir="res/values" />
-        <source-file src="src/android/values-w820dp/dimens.xml" target-dir="res/values-w820dp" />
+        <config-file target="res/values/strings.xml" parent="/*">
+            <string name="camera_permission_confirmation">This app demonstrates the usage of CameraView. In order to do that, it needs permission to access camera.</string>
+            <string name="camera_permission_not_granted">Camera app cannot do anything without camera permission.</string>
+            <string name="picture_taken">Picture taken</string>
+            <string name="aspect_ratio">Aspect ratio</string>
+            <string name="switch_flash">Switch flash</string>
+            <string name="switch_camera">Switch camera</string>
+            <string name="flash_auto">Flash auto</string>
+            <string name="flash_off">Flash off</string>
+            <string name="flash_on">Flash on</string>
+        </config-file>
+        <config-file target="res/values/dimens.xml" parent="/*">
+            <dimen name="activity_horizontal_margin">16dp</dimen>
+            <dimen name="activity_vertical_margin">16dp</dimen>
+            <dimen name="mcam_gallery_item_size">70dp</dimen>
+        </config-file>
+        <config-file target="res/values-w820dp/dimens.xml" parent="/*">
+            <dimen name="activity_horizontal_margin">64dp</dimen>
+        </config-file>
 
         <source-file src="src/android/menu/main.xml" target-dir="res/menu" />
                 
