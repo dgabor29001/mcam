@@ -74,8 +74,7 @@
 
         <activity android:name="org.apache.cordova.camera.CustomCamera" 
                         android:theme="@style/Theme.Demo"
-                        android:label="@string/app_name"
-                        android:screenOrientation="portrait" /> 
+                        android:label="@string/app_name" /> 
 
           <provider
               android:name="android.support.v4.content.FileProvider"
