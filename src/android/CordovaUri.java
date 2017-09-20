@@ -66,7 +66,7 @@ public class CordovaUri {
 
     public String getFilePath()
     {
-        return fileName;
+        return fileName.replaceAll("%20"," ");
     }
 
     /*
