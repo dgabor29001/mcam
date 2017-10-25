@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/background_dark"
+    tools:context="com.example.dgabor.wow.MainActivity">
+        <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!--Toolbar-->
+            <android.support.v7.widget.Toolbar
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/wowToolbar"
+                android:layout_height="?attr/actionBarSize"
+                android:layout_width="match_parent"
+                android:background="?attr/colorPrimary"
+                android:gravity="center_vertical|start"
+                app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+                <android.support.v7.widget.ActionMenuView
+                    android:id="@+id/wowMenu"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"/>
+
+            </android.support.v7.widget.Toolbar>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <RelativeLayout
+        xmlns:tools="http://schemas.android.com/tools"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!--Camera-->
+        <com.flurgle.camerakit.CameraView
+            xmlns:camerakit="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/camera"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            camerakit:ckFocus="continuous"
+            camerakit:ckFlash="auto"
+            android:adjustViewBounds="true" />
+
+        <!--Cropper-->
+        <com.theartofdev.edmodo.cropper.CropImageView
+            xmlns:custom="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/cropImageView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            custom:cropInitialCropWindowPaddingRatio="0"
+            android:visibility="gone" />
+
+        <!--Gallery-->
+        <android.support.v7.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/wowGallery"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/mcam_gallery_item_size"
+            android:layout_above="@+id/btn_take_picture"
+            android:layout_toEndOf="@+id/cropImageView"
+            android:layout_toRightOf="@+id/cropImageView"
+            android:visibility="gone" />
+
+        <!--Capture-->
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/btn_take_picture"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="16dp"
+            app:srcCompat="@drawable/ic_camera"
+            app:useCompatPadding="true"/>
+
+        <!--SwtchFlash-->
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/btn_change_flash"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginEnd="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="30dp"
+            app:srcCompat="@drawable/ic_flash_auto" />
+
+    </RelativeLayout>
+
+</android.support.design.widget.CoordinatorLayout>
+

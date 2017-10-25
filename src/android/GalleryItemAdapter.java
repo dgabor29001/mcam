@@ -1,19 +1,3 @@
-/*
- * Copyright (C) 2016 The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package org.apache.cordova.camera;
 
 import android.app.ProgressDialog;
@@ -28,7 +12,7 @@ import com.bumptech.glide.Glide;
 import java.util.ArrayList;
 
 /**
- * Created by dgabor on 13/09/2017.
+ * Created by dgabor on 24/10/2017.
  */
 
 public class GalleryItemAdapter extends RecyclerView.Adapter<GalleryItemAdapter.MyViewHolder> {
@@ -42,13 +26,14 @@ public class GalleryItemAdapter extends RecyclerView.Adapter<GalleryItemAdapter.
     private ArrayList<String> images;
     private Context context;
     private ProgressDialog pd;
+    //private FakeR faker;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         private ImageView thumb_image;
 
         public MyViewHolder(View view) {
             super(view);
-            thumb_image=(ImageView) view.findViewById(context.getResources().getIdentifier("custom_image", "id", context.getPackageName()));//view.findViewById(R.id.custom_image);
+            thumb_image = (ImageView) view.findViewById(FakeR.getId(context,"id", "custom_image"));
             thumb_image.setVisibility(View.VISIBLE);
         }
 
@@ -75,13 +60,14 @@ public class GalleryItemAdapter extends RecyclerView.Adapter<GalleryItemAdapter.
         this.context = context;
         this.images = images;
         this.listener = listener;
+        //this.faker = new FakeR(context);
+
     }
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(context.getResources().getIdentifier("mcam_gallery_item", "layout", context.getPackageName()), parent, false);
-                //.inflate(R.layout.mcam_gallery_item, parent, false);
+                .inflate(FakeR.getId(this.context,"layout", "wowcam_gallery_item"), parent, false);
 
         return new MyViewHolder(itemView);
     }

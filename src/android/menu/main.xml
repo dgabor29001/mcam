@@ -16,9 +16,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/switch_flash"
-        android:icon="@drawable/ic_flash_auto"
-        app:showAsAction="ifRoom"/>
+        android:id="@+id/cancel"
+        android:icon="@drawable/ic_close"
+        android:title="@string/camera_cancel_cropper"
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/rotate"
+        android:icon="@drawable/ic_rotate_90"
+        android:title="@string/camera_rotate_cropper"
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/save"
+        android:icon="@drawable/ic_done"
+        android:title="@string/camera_save_cropper"
+        app:showAsAction="always"/>
+
 
 </menu>
-

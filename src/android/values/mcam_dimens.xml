@@ -12,7 +12,5 @@
     limitations under the License.
 -->
 <resources>
-    <dimen name="activity_horizontal_margin">16dp</dimen>
-    <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="mcam_gallery_item_size">70dp</dimen>
 </resources>

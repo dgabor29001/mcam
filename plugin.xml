@@ -87,45 +87,43 @@
           </provider>
         </config-file>
 
-        <source-file src="src/android/CustomCamera.java" target-dir="src/org/apache/cordova/camera" />
+        <source-file src="src/android/WowCamera.java" target-dir="src/org/apache/cordova/camera" />
         <source-file src="src/android/GalleryItemAdapter.java" target-dir="src/org/apache/cordova/camera" />
-        <source-file src="src/android/SimpleOrientationListener.java" target-dir="src/org/apache/cordova/camera" />
+        <source-file src="src/android/FakeR.java" target-dir="src/org/apache/cordova/camera" />
+        <source-file src="src/android/ConfirmationDialogFragment.java" target-dir="src/org/apache/cordova/camera" />
         <source-file src="src/android/CameraLauncher.java" target-dir="src/org/apache/cordova/camera" />
         <source-file src="src/android/CordovaUri.java" target-dir="src/org/apache/cordova/camera" />
         <source-file src="src/android/FileHelper.java" target-dir="src/org/apache/cordova/camera" />
         <source-file src="src/android/ExifHelper.java" target-dir="src/org/apache/cordova/camera" />
         <source-file src="src/android/xml/provider_paths.xml" target-dir="res/xml" />
 
-        <source-file src="src/android/layout/mcam_main.xml" target-dir="res/layout"/>
-        <source-file src="src/android/layout-land/mcam_main.xml" target-dir="res/layout-land"/>
-        <source-file src="src/android/layout/mcam_include_gallery.xml" target-dir="res/layout"/>
-        <source-file src="src/android/layout/mcam_gallery_item.xml" target-dir="res/layout"/>
+        <source-file src="src/android/layout/wowcam_main.xml" target-dir="res/layout"/>
+        <source-file src="src/android/layout/wowcam_gallery_item.xml" target-dir="res/layout"/>
 
         <source-file src="src/android/drawable/ic_camera.xml" target-dir="res/drawable" />
+        <source-file src="src/android/drawable/ic_close.xml" target-dir="res/drawable" />
+        <source-file src="src/android/drawable/ic_done.xml" target-dir="res/drawable" />
         <source-file src="src/android/drawable/ic_flash_auto.xml" target-dir="res/drawable" />
         <source-file src="src/android/drawable/ic_flash_off.xml" target-dir="res/drawable" />
         <source-file src="src/android/drawable/ic_flash_on.xml" target-dir="res/drawable" />
-        <source-file src="src/android/drawable/ic_aspect_ratio.xml" target-dir="res/drawable" />
-        <source-file src="src/android/drawable/ic_switch_camera.xml" target-dir="res/drawable" />
+        <source-file src="src/android/drawable/ic_rotate_90.xml" target-dir="res/drawable" />
         
         <source-file src="src/android/values/mcam_styles.xml" target-dir="res/values" />
         <source-file src="src/android/values/mcam_strings.xml" target-dir="res/values" />
         <source-file src="src/android/values/mcam_dimens.xml" target-dir="res/values" />
-        <source-file src="src/android/values-w820dp/mcam_dimens.xml" target-dir="res/values-w820dp" />
+        <source-file src="src/android/values/mcam_colors.xml" target-dir="res/values" />
 
         <source-file src="src/android/menu/main.xml" target-dir="res/menu" />
                 
         <js-module src="www/CameraPopoverHandle.js" name="CameraPopoverHandle">
             <clobbers target="CameraPopoverHandle" />
-          </js-module>
-
-        <resource-file src="src/android/libs/library.aar" target="libs/library.aar" />
+        </js-module>
         
-        <framework src="com.android.support:support-v4:24.1.1+" />
-        <framework src="com.android.support:design:24.1.1+" />
-        <framework src="com.android.support:recyclerview-v7:24.1.1+" />
+        <framework src="com.android.support:appcompat-v7:26.1.0" />
+        <framework src="com.android.support:design:26.1.0" />
+        <framework src="com.flurgle:camerakit:0.9.17" />
+        <framework src="com.theartofdev.edmodo:android-image-cropper:2.5.1" />
         <framework src="com.github.bumptech.glide:glide:3.7.0" />
-        <framework src="src/android/libs/library.gradle" custom="true" type="gradleReference" />
 
       </platform>
 
