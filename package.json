@@ -21,10 +21,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/uiktiomasfeliz/mcam"
+    "url": "git+ssh://git@github.com/uiktiomasfeliz/mcam.git"
   },
   "bugs": {
-    "url": "https://issues.apache.org/jira/browse/CB"
+    "url": "https://github.com/uiktiomasfeliz/mcam/issues"
   },
   "keywords": [
     "cordova",
