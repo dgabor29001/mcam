@@ -477,7 +477,7 @@ public class CameraLauncher extends CordovaPlugin implements MediaScannerConnect
         int rotate = 0;
 
         //dg -- added custom uri
-        if(intent.getData() != null)
+         if(intent != null && intent.getData() != null && !this.useNativeCamera)
             this.imageUri = new CordovaUri(intent.getData());//intent.getData();
 
         // Create an ExifHelper to save the exif data that is lost during compression
