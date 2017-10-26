@@ -73,6 +73,7 @@ for (var key in Camera) {
  * @property {module:Camera.MediaType} [mediaType=PICTURE] - Set the type of media to select from.  Only works when `PictureSourceType` is `PHOTOLIBRARY` or `SAVEDPHOTOALBUM`.
  * @property {Boolean} [correctOrientation] - Rotate the image to correct for the orientation of the device during capture.
  * @property {Boolean} [saveToPhotoAlbum] - Save the image to the photo album on the device after capture.
+ * @property {Boolean} [useNativeCamera] - Android-only switch between sistem camera or custom camera(avoid background close).
  * @property {module:CameraPopoverOptions} [popoverOptions] - iOS-only options that specify popover location in iPad.
  * @property {module:Camera.Direction} [cameraDirection=BACK] - Choose the camera to use (front- or back-facing).
  */
@@ -146,11 +147,12 @@ cameraExport.getPicture = function (successCallback, errorCallback, options) {
     var allowEdit = !!options.allowEdit;
     var correctOrientation = !!options.correctOrientation;
     var saveToPhotoAlbum = !!options.saveToPhotoAlbum;
+    var useNativeCamera = !!options.useNativeCamera;
     var popoverOptions = getValue(options.popoverOptions, null);
     var cameraDirection = getValue(options.cameraDirection, Camera.Direction.BACK);
 
     var args = [quality, destinationType, sourceType, targetWidth, targetHeight, encodingType,
-        mediaType, allowEdit, correctOrientation, saveToPhotoAlbum, popoverOptions, cameraDirection];
+        mediaType, allowEdit, correctOrientation, saveToPhotoAlbum, popoverOptions, cameraDirection, useNativeCamera];
 
     exec(successCallback, errorCallback, 'Camera', 'takePicture', args);
     // XXX: commented out

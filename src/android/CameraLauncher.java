@@ -109,6 +109,7 @@ public class CameraLauncher extends CordovaPlugin implements MediaScannerConnect
     private int destType;                   // Source type (needs to be saved for the permission handling)
     private int srcType;                    // Destination type (needs to be saved for permission handling)
     private boolean saveToPhotoAlbum;       // Should the picture be saved to the device's photo album
+    private boolean useNativeCamera;        // Switch between sistem camera or custom camera(avoid background close).
     private boolean correctOrientation;     // Should the pictures orientation be corrected
     private boolean orientationCorrected;   // Has the picture's orientation been corrected
     private boolean allowEdit;              // Should we allow the user to crop the image.
@@ -145,6 +146,7 @@ public class CameraLauncher extends CordovaPlugin implements MediaScannerConnect
             this.srcType = CAMERA;
             this.destType = FILE_URI;
             this.saveToPhotoAlbum = false;
+            this.useNativeCamera = false;
             this.targetHeight = 0;
             this.targetWidth = 0;
             this.encodingType = JPEG;
@@ -162,6 +164,7 @@ public class CameraLauncher extends CordovaPlugin implements MediaScannerConnect
             this.allowEdit = args.getBoolean(7);
             this.correctOrientation = args.getBoolean(8);
             this.saveToPhotoAlbum = args.getBoolean(9);
+            this.useNativeCamera = args.getBoolean(12);
 
             // If the user specifies a 0 or smaller width/height
             // make it -1 so later comparisons succeed
@@ -288,7 +291,14 @@ public class CameraLauncher extends CordovaPlugin implements MediaScannerConnect
         this.numPics = queryImgDB(whichContentStore()).getCount();
 
         // Let's use the intent and see what happens
-        Intent intent = new Intent(this.cordova.getActivity().getApplicationContext(), WowCamera.class);//new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        Intent intent;
+
+        if(this.useNativeCamera) {
+            intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        } else {
+            intent = new Intent(this.cordova.getActivity().getApplicationContext(), WowCamera.class);//new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        }
+        
 
         // Specify file so that large image is captured and returned
         File photo = createCaptureFile(encodingType);
@@ -513,7 +523,7 @@ public class CameraLauncher extends CordovaPlugin implements MediaScannerConnect
         if (destType == DATA_URL) {
             bitmap = getScaledAndRotatedBitmap(sourcePath);
 
-            if (bitmap == null) {
+            if (bitmap == null && intent.hasExtra("data")) {//check if extra is empty/null
                 // Try to get the bitmap from intent.
                 bitmap = (Bitmap) intent.getExtras().get("data");
             }

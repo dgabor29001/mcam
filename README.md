@@ -279,6 +279,7 @@ Optional parameters to customize the camera settings.
 | mediaType | <code>[MediaType](#module_Camera.MediaType)</code> | <code>PICTURE</code> | Set the type of media to select from.  Only works when `PictureSourceType` is `PHOTOLIBRARY` or `SAVEDPHOTOALBUM`. |
 | correctOrientation | <code>Boolean</code> |  | Rotate the image to correct for the orientation of the device during capture. |
 | saveToPhotoAlbum | <code>Boolean</code> |  | Save the image to the photo album on the device after capture. |
+| useNativeCamera | <code>Boolean</code> |  | Android-only switch between sistem camera or custom camera(avoid background close). |
 | popoverOptions | <code>[CameraPopoverOptions](#module_CameraPopoverOptions)</code> |  | iOS-only options that specify popover location in iPad. |
 | cameraDirection | <code>[Direction](#module_Camera.Direction)</code> | <code>BACK</code> | Choose the camera to use (front- or back-facing). |
 
