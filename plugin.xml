@@ -74,7 +74,9 @@
 
         <activity android:name="org.apache.cordova.camera.WowCamera" 
                         android:theme="@style/WowCamTheme"
-                        android:label="@string/app_name" /> 
+                        android:label="@string/app_name"
+                        android:screenOrientation="portrait"
+                        android:configChanges="orientation|keyboardHidden" /> 
 
           <provider
               android:name="android.support.v4.content.FileProvider"
@@ -119,11 +121,7 @@
             <clobbers target="CameraPopoverHandle" />
         </js-module>
         
-        <framework src="com.android.support:appcompat-v7:26.1.0" />
-        <framework src="com.android.support:design:26.1.0" />
-        <framework src="com.flurgle:camerakit:0.9.17" />
-        <framework src="com.theartofdev.edmodo:android-image-cropper:2.5.1" />
-        <framework src="com.github.bumptech.glide:glide:3.7.0" />
+        <framework src="src/android/plugin.gradle" custom="true" type="gradleReference"/>
 
       </platform>
 

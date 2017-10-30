@@ -296,7 +296,7 @@ public class CameraLauncher extends CordovaPlugin implements MediaScannerConnect
         if(this.useNativeCamera) {
             intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         } else {
-            intent = new Intent(this.cordova.getActivity().getApplicationContext(), WowCamera.class);//new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+            intent = new Intent(this.cordova.getActivity().getApplicationContext(), WowCamera.class).putExtra("save", saveToPhotoAlbum);//new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         }
         
 
@@ -477,8 +477,18 @@ public class CameraLauncher extends CordovaPlugin implements MediaScannerConnect
         int rotate = 0;
 
         //dg -- added custom uri
-         if(intent != null && intent.getData() != null && !this.useNativeCamera)
-            this.imageUri = new CordovaUri(intent.getData());//intent.getData();
+         if(intent != null && intent.getData() != null && !this.useNativeCamera) {
+
+           Bundle extras = intent.getExtras();
+           if (extras != null) {
+             if (extras.containsKey("save")) {
+               saveToPhotoAlbum = extras.getBoolean("save", false);
+             }
+           }
+
+           this.imageUri = new CordovaUri(intent.getData());//intent.getData();
+
+         }
 
         // Create an ExifHelper to save the exif data that is lost during compression
         ExifHelper exif = new ExifHelper();

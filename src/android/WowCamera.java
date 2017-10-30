@@ -8,7 +8,6 @@ import android.content.res.Configuration;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Point;
 import android.net.Uri;
 import android.os.Environment;
 import android.provider.MediaStore;
@@ -22,15 +21,11 @@ import android.support.v7.widget.AppCompatImageView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.DisplayMetrics;
 import android.util.Log;
-import android.view.Display;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 
 import static com.flurgle.camerakit.CameraKit.Constants.FLASH_AUTO;
 import static com.flurgle.camerakit.CameraKit.Constants.FLASH_OFF;
@@ -38,13 +33,11 @@ import static com.flurgle.camerakit.CameraKit.Constants.FLASH_ON;
 
 import com.flurgle.camerakit.CameraListener;
 import com.flurgle.camerakit.CameraView;
-import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.OutputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -80,10 +73,21 @@ public class WowCamera extends AppCompatActivity {
 
     private FakeR fakeR;
     private int currentFlash;
+    private boolean save_on_sd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //save_on_sd = getIntent().getExtras().getBoolean("yourBoolName");
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+          if (extras.containsKey("save")) {
+            save_on_sd = extras.getBoolean("save", false);
+
+            // TODO: Do something with the value of isNew.
+          }
+        }
 
         fakeR = new FakeR(this);
 
@@ -131,7 +135,7 @@ public class WowCamera extends AppCompatActivity {
                         Log.w(TAG, "Cannot write to " + file, e);
                     } finally {
                         if (res) {
-                            setResult(Activity.RESULT_OK, new Intent().setData(Uri.fromFile(file)));
+                            setResult(Activity.RESULT_OK, new Intent().setData(Uri.fromFile(file)).putExtra("save", save_on_sd));
                             finish();
                         } else {
                             setResult(Activity.RESULT_CANCELED, new Intent());
@@ -318,11 +322,8 @@ public class WowCamera extends AppCompatActivity {
                     public void galleryResponse(String img) {
                         Log.e(TAG, "galleryResponse: " + img);
                         try{
-                            //Bundle conData = new Bundle();
-                            //conData.putString("SDCardUrl", img);
-
                             Intent intent = new Intent();
-                            //intent.putExtras(conData);
+                            intent.putExtra("save", false);
                             intent.setData(Uri.fromFile(new File(img)));
                             setResult(Activity.RESULT_OK, intent);
                         } catch (Exception e){
