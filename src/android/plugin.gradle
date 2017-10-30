@@ -1,7 +1,7 @@
-repositories {
-    jcenter()
-    google()
-}
+//repositories {
+    //jcenter()
+    //google()
+//}}
 
 dependencies {
     compile ('com.android.support:appcompat-v7:26.1.0')
