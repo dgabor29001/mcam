@@ -112,7 +112,7 @@ public class CameraLauncher extends CordovaPlugin implements MediaScannerConnect
     private boolean useNativeCamera;        // Switch between sistem camera or custom camera(avoid background close).
     private boolean correctOrientation;     // Should the pictures orientation be corrected
     private boolean orientationCorrected;   // Has the picture's orientation been corrected
-    private boolean allowEdit;              // Should we allow the user to crop the image.
+    private boolean allowEdit = false;              // Should we allow the user to crop the image.
 
     protected final static String[] permissions = { Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE };
 
@@ -161,10 +161,10 @@ public class CameraLauncher extends CordovaPlugin implements MediaScannerConnect
             this.targetHeight = args.getInt(4);
             this.encodingType = args.getInt(5);
             this.mediaType = args.getInt(6);
-            this.allowEdit = args.getBoolean(7);
+            this.useNativeCamera = args.getBoolean(7); //this.allowEdit = args.getBoolean(7);
             this.correctOrientation = args.getBoolean(8);
             this.saveToPhotoAlbum = args.getBoolean(9);
-            this.useNativeCamera = args.getBoolean(12);
+            //this.useNativeCamera = args.getBoolean(12);
 
             // If the user specifies a 0 or smaller width/height
             // make it -1 so later comparisons succeed
@@ -1360,6 +1360,7 @@ public class CameraLauncher extends CordovaPlugin implements MediaScannerConnect
         state.putInt("mediaType", this.mediaType);
         state.putInt("numPics", this.numPics);
         state.putBoolean("allowEdit", this.allowEdit);
+        state.putBoolean("useNativeCamera", this.useNativeCamera);
         state.putBoolean("correctOrientation", this.correctOrientation);
         state.putBoolean("saveToPhotoAlbum", this.saveToPhotoAlbum);
 
@@ -1384,6 +1385,7 @@ public class CameraLauncher extends CordovaPlugin implements MediaScannerConnect
         this.mediaType = state.getInt("mediaType");
         this.numPics = state.getInt("numPics");
         this.allowEdit = state.getBoolean("allowEdit");
+        this.useNativeCamera = state.getBoolean("useNativeCamera");
         this.correctOrientation = state.getBoolean("correctOrientation");
         this.saveToPhotoAlbum = state.getBoolean("saveToPhotoAlbum");
 
