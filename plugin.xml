@@ -54,7 +54,7 @@
             </feature>
         </config-file>
 
-         <config-file target="app/src/main/AndroidManifest.xml" parent="/manifest/application" mode="merge">
+         <config-file target="AndroidManifest.xml" parent="/manifest/application">
             <activity android:name="org.apache.cordova.camera.WowCamera" 
                     android:theme="@style/WowCamTheme"
                     android:label="@string/app_name"
@@ -72,39 +72,39 @@
           </provider>
         </config-file>
         
-        <config-file target="app/src/main/AndroidManifest.xml" parent="/manifest" mode="merge">
+        <config-file target="AndroidManifest.xml" parent="/manifest">
             <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
             <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
         </config-file>
 
-        <source-file src="src/android/WowCamera.java" target-dir="app/src/main/java/org/apache/cordova/camera" />
-        <source-file src="src/android/GalleryItemAdapter.java" target-dir="app/src/main/java/org/apache/cordova/camera" />
-        <source-file src="src/android/FakeR.java" target-dir="app/src/main/java/org/apache/cordova/camera" />
-        <source-file src="src/android/ConfirmationDialogFragment.java" target-dir="app/src/main/java/org/apache/cordova/camera" />
-        <source-file src="src/android/CameraLauncher.java" target-dir="app/src/main/java/org/apache/cordova/camera" />
-        <source-file src="src/android/CordovaUri.java" target-dir="app/src/main/java/org/apache/cordova/camera" />
-        <source-file src="src/android/FileHelper.java" target-dir="app/src/main/java/org/apache/cordova/camera" />
-        <source-file src="src/android/ExifHelper.java" target-dir="app/src/main/java/org/apache/cordova/camera" />
-        <source-file src="src/android/FileProvider.java" target-dir="app/src/main/java/org/apache/cordova/camera" />
-        <source-file src="src/android/xml/camera_provider_paths.xml" target-dir="app/src/res/xml" />
+        <source-file src="src/android/WowCamera.java" target-dir="src/org/apache/cordova/camera" />
+        <source-file src="src/android/GalleryItemAdapter.java" target-dir="src/org/apache/cordova/camera" />
+        <source-file src="src/android/FakeR.java" target-dir="src/org/apache/cordova/camera" />
+        <source-file src="src/android/ConfirmationDialogFragment.java" target-dir="src/org/apache/cordova/camera" />
+        <source-file src="src/android/CameraLauncher.java" target-dir="src/org/apache/cordova/camera" />
+        <source-file src="src/android/CordovaUri.java" target-dir="src/org/apache/cordova/camera" />
+        <source-file src="src/android/FileHelper.java" target-dir="src/org/apache/cordova/camera" />
+        <source-file src="src/android/ExifHelper.java" target-dir="src/org/apache/cordova/camera" />
+        <source-file src="src/android/FileProvider.java" target-dir="src/org/apache/cordova/camera" />
+        <source-file src="src/android/xml/camera_provider_paths.xml" target-dir="res/xml" />
 
-        <source-file src="src/android/layout/wowcam_main.xml" target-dir="app/src/res/layout"/>
-        <source-file src="src/android/layout/wowcam_gallery_item.xml" target-dir="app/src/res/layout"/>
+        <source-file src="src/android/layout/wowcam_main.xml" target-dir="res/layout"/>
+        <source-file src="src/android/layout/wowcam_gallery_item.xml" target-dir="res/layout"/>
 
-        <source-file src="src/android/drawable/ic_camera.xml" target-dir="app/src/res/drawable" />
-        <source-file src="src/android/drawable/ic_close.xml" target-dir="app/src/res/drawable" />
-        <source-file src="src/android/drawable/ic_done.xml" target-dir="app/src/res/drawable" />
-        <source-file src="src/android/drawable/ic_flash_auto.xml" target-dir="app/src/res/drawable" />
-        <source-file src="src/android/drawable/ic_flash_off.xml" target-dir="app/src/res/drawable" />
-        <source-file src="src/android/drawable/ic_flash_on.xml" target-dir="app/src/res/drawable" />
-        <source-file src="src/android/drawable/ic_rotate_90.xml" target-dir="app/src/res/drawable" />
+        <source-file src="src/android/drawable/ic_camera.xml" target-dir="res/drawable" />
+        <source-file src="src/android/drawable/ic_close.xml" target-dir="res/drawable" />
+        <source-file src="src/android/drawable/ic_done.xml" target-dir="res/drawable" />
+        <source-file src="src/android/drawable/ic_flash_auto.xml" target-dir="res/drawable" />
+        <source-file src="src/android/drawable/ic_flash_off.xml" target-dir="res/drawable" />
+        <source-file src="src/android/drawable/ic_flash_on.xml" target-dir="res/drawable" />
+        <source-file src="src/android/drawable/ic_rotate_90.xml" target-dir="res/drawable" />
         
-        <source-file src="src/android/values/mcam_styles.xml" target-dir="app/src/res/values" />
-        <source-file src="src/android/values/mcam_strings.xml" target-dir="app/src/res/values" />
-        <source-file src="src/android/values/mcam_dimens.xml" target-dir="app/src/res/values" />
-        <source-file src="src/android/values/mcam_colors.xml" target-dir="app/src/res/values" />
+        <source-file src="src/android/values/mcam_styles.xml" target-dir="res/values" />
+        <source-file src="src/android/values/mcam_strings.xml" target-dir="res/values" />
+        <source-file src="src/android/values/mcam_dimens.xml" target-dir="res/values" />
+        <source-file src="src/android/values/mcam_colors.xml" target-dir="res/values" />
 
-        <source-file src="src/android/menu/main.xml" target-dir="app/src/res/menu" />
+        <source-file src="src/android/menu/main.xml" target-dir="res/menu" />
                 
         <js-module src="www/CameraPopoverHandle.js" name="CameraPopoverHandle">
             <clobbers target="CameraPopoverHandle" />
