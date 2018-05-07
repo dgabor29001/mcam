@@ -38,16 +38,17 @@
   },
   "author": "Apache Software Foundation",
   "license": "Apache-2.0",
-  "engines": {
-    "cordovaDependencies": {
-      "3.0.0": {
-        "cordova-android": ">=6.3.0"
-      },
-      "5.0.0": {
-        "cordova": ">100"
-      }
+  "engines": 
+  [
+    {
+      "name": "cordova-android",
+      "version": ">=6.3.0"
+    },
+    {
+      "name": "cordova",
+      "version": ">100"
     }
-  },
+  ],
   "devDependencies": {
     "dmd-plugin-cordova-plugin": "^0.1.0",
     "eslint": "^4.3.0",
