@@ -38,8 +38,7 @@
   },
   "author": "Apache Software Foundation",
   "license": "Apache-2.0",
-  "engines": 
-  [
+  "engines": [
     {
       "name": "cordova-android",
       "version": ">=7.0.0"
