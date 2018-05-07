@@ -23,7 +23,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:rim="http://www.blackberry.com/ns/widgets"
     id="cordova-plugin-camera"
-    version="4.0.1-dev">
+    version="4.0.4-dev">
     <name>Camera</name>
     <description>Cordova Camera Plugin</description>
     <license>Apache 2.0</license>
@@ -48,7 +48,6 @@
     <js-module src="www/Camera.js" name="camera">
         <clobbers target="navigator.camera" />
     </js-module>
-  
     <!-- android -->
     <platform name="android">
         <config-file target="res/xml/config.xml" parent="/*">
@@ -69,13 +68,13 @@
                         android:configChanges="orientation|keyboardHidden" /> 
 
           <provider
-              android:name="android.support.v4.content.FileProvider"
+              android:name="org.apache.cordova.camera.FileProvider"
               android:authorities="${applicationId}.provider"
               android:exported="false"
               android:grantUriPermissions="true" >
               <meta-data
                   android:name="android.support.FILE_PROVIDER_PATHS"
-                  android:resource="@xml/provider_paths"/>
+                  android:resource="@xml/camera_provider_paths"/>
           </provider>
         </config-file>
 
@@ -87,7 +86,8 @@
         <source-file src="src/android/CordovaUri.java" target-dir="src/org/apache/cordova/camera" />
         <source-file src="src/android/FileHelper.java" target-dir="src/org/apache/cordova/camera" />
         <source-file src="src/android/ExifHelper.java" target-dir="src/org/apache/cordova/camera" />
-        <source-file src="src/android/xml/provider_paths.xml" target-dir="res/xml" />
+        <source-file src="src/android/FileProvider.java" target-dir="src/org/apache/cordova/camera" />
+        <source-file src="src/android/xml/camera_provider_paths.xml" target-dir="res/xml" />
 
         <source-file src="src/android/layout/wowcam_main.xml" target-dir="res/layout"/>
         <source-file src="src/android/layout/wowcam_gallery_item.xml" target-dir="res/layout"/>
@@ -143,20 +143,6 @@
          <framework src="CoreGraphics.framework" />
          <framework src="AVFoundation.framework" />
 
-         <preference name="CAMERA_USAGE_DESCRIPTION" default=" " />
-         <config-file target="*-Info.plist" parent="NSCameraUsageDescription">
-             <string>$CAMERA_USAGE_DESCRIPTION</string>
-         </config-file>
-
-         <preference name="PHOTOLIBRARY_USAGE_DESCRIPTION" default=" " />
-         <config-file target="*-Info.plist" parent="NSPhotoLibraryUsageDescription">
-             <string>$PHOTOLIBRARY_USAGE_DESCRIPTION</string>
-         </config-file>
-
-         <config-file target="*-Info.plist" parent="NSLocationWhenInUseUsageDescription">
-             <string></string>
-         </config-file>
-
      </platform>
 
     <!-- browser -->
@@ -204,5 +190,4 @@
         <framework src="AppKit.framework" />
     </platform>
     
-
 </plugin>
