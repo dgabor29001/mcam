@@ -79,15 +79,15 @@
             <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
         </config-file>
 
-        <source-file src="src/android/WowCamera.java" target-dir="src/org/apache/cordova/camera" />
-        <source-file src="src/android/GalleryItemAdapter.java" target-dir="src/org/apache/cordova/camera" />
-        <source-file src="src/android/FakeR.java" target-dir="src/org/apache/cordova/camera" />
-        <source-file src="src/android/ConfirmationDialogFragment.java" target-dir="src/org/apache/cordova/camera" />
-        <source-file src="src/android/CameraLauncher.java" target-dir="src/org/apache/cordova/camera" />
-        <source-file src="src/android/CordovaUri.java" target-dir="src/org/apache/cordova/camera" />
-        <source-file src="src/android/FileHelper.java" target-dir="src/org/apache/cordova/camera" />
-        <source-file src="src/android/ExifHelper.java" target-dir="src/org/apache/cordova/camera" />
-        <source-file src="src/android/FileProvider.java" target-dir="src/org/apache/cordova/camera" />
+        <source-file src="src/android/WowCamera.java" target-dir="app/src/main/java/org/apache/cordova/camera" />
+        <source-file src="src/android/GalleryItemAdapter.java" target-dir="app/src/main/java/org/apache/cordova/camera" />
+        <source-file src="src/android/FakeR.java" target-dir="app/src/main/java/org/apache/cordova/camera" />
+        <source-file src="src/android/ConfirmationDialogFragment.java" target-dir="app/src/main/java/org/apache/cordova/camera" />
+        <source-file src="src/android/CameraLauncher.java" target-dir="app/src/main/java/org/apache/cordova/camera" />
+        <source-file src="src/android/CordovaUri.java" target-dir="app/src/main/java/org/apache/cordova/camera" />
+        <source-file src="src/android/FileHelper.java" target-dir="app/src/main/java/org/apache/cordova/camera" />
+        <source-file src="src/android/ExifHelper.java" target-dir="app/src/main/java/org/apache/cordova/camera" />
+        <source-file src="src/android/FileProvider.java" target-dir="app/src/main/java/org/apache/cordova/camera" />
         <source-file src="src/android/xml/camera_provider_paths.xml" target-dir="res/xml" />
 
         <source-file src="src/android/layout/wowcam_main.xml" target-dir="res/layout"/>
