@@ -55,11 +55,11 @@
                 <param name="android-package" value="org.apache.cordova.camera.CameraLauncher"/>
             </feature>
         </config-file>
-        <config-file target="AndroidManifest.xml" parent="/*">
+        <config-file target="AndroidManifest.xml" parent="/manifest">
             <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
             <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
         </config-file>
-        <config-file target="AndroidManifest.xml" parent="application">
+        <config-file target="AndroidManifest.xml" parent="/manifest/application">
 
         <activity android:name="org.apache.cordova.camera.WowCamera" 
                         android:theme="@style/WowCamTheme"
