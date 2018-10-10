@@ -1,7 +1,7 @@
-//repositories {
-    //jcenter()
-    //google()
-//}}
+repositories {
+  maven { url 'https://maven.fabric.io/public' }
+  maven { url 'https://dl.bintray.com/flurgle/maven' }
+}
 
 dependencies {
     compile ('com.android.support:appcompat-v7:26.1.0')
