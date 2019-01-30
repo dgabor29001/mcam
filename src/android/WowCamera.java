@@ -26,15 +26,6 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-
-import static com.flurgle.camerakit.CameraKit.Constants.FLASH_AUTO;
-import static com.flurgle.camerakit.CameraKit.Constants.FLASH_OFF;
-import static com.flurgle.camerakit.CameraKit.Constants.FLASH_ON;
-
-import com.flurgle.camerakit.CameraListener;
-import com.flurgle.camerakit.CameraView;
-import com.theartofdev.edmodo.cropper.CropImageView;
-
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -44,6 +35,13 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Locale;
+
+import com.camerakit.CameraKitView;
+import com.theartofdev.edmodo.cropper.CropImageView;
+
+import static com.camerakit.CameraKit.FLASH_AUTO;
+import static com.camerakit.CameraKit.FLASH_OFF;
+import static com.camerakit.CameraKit.FLASH_ON;
 
 public class WowCamera extends AppCompatActivity {
 
@@ -68,12 +66,13 @@ public class WowCamera extends AppCompatActivity {
 
     private ActionMenuView wowMenu;
 
-    private CameraView camera;
+    private CameraKitView camera;
     private CropImageView cropImageView;
 
     private FakeR fakeR;
     private int currentFlash;
     private boolean save_on_sd;
+    private long captureStartTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -161,8 +160,9 @@ public class WowCamera extends AppCompatActivity {
 
         cropImageView = (CropImageView) findViewById(fakeR.getId("id", "cropImageView" ));
 
-        camera = (CameraView) findViewById(fakeR.getId("id", "camera" ));
-
+        camera = (CameraKitView) findViewById(fakeR.getId("id", "camera" ));
+        /*
+        Old Camera
         camera.setCameraListener(new CameraListener() {
             @Override
             public void onPictureTaken(byte[] picture) {
@@ -176,6 +176,7 @@ public class WowCamera extends AppCompatActivity {
                 cropImageView.setImageBitmap(result);
             }
         });
+        */
 
         gallery = (RecyclerView) findViewById(fakeR.getId("id", "wowGallery" ));
 
@@ -216,7 +217,19 @@ public class WowCamera extends AppCompatActivity {
                 public void onClick(View v) {
                     if(camera!=null) {
                         btnCapture.setEnabled(false);
-                        camera.captureImage();
+                        //camera.captureImage();
+                        captureStartTime = System.currentTimeMillis();
+                        camera.captureImage(new CameraKitView.ImageCallback() {
+                            @Override
+                            public void onImage(CameraKitView cameraKitView, byte[] bytes) {
+                                switchToCropper(true);
+                                btnCapture.setEnabled(true);
+
+                                // Create a bitmap
+                                Bitmap result = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+                                cropImageView.setImageBitmap(result);
+                            }
+                        });
                     }
                 }
             });
@@ -338,28 +351,7 @@ public class WowCamera extends AppCompatActivity {
         gallery.setVisibility(View.VISIBLE);
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        camera.start();
-        //startCamera();
-    }
-
-    @Override
-    protected void onPause() {
-        //camera.stop();
-        stopCamera();
-        super.onPause();
-    }
-
-    private void startCamera(){
-        if(camera!=null) camera.start();
-    }
-
-    private void stopCamera(){
-        if(camera!=null) camera.stop();
-    }
-
+    @SuppressLint("RestrictedApi") // also suppressed the warning
     private void switchToCropper(Boolean iddle){
         if(iddle) {
             getSupportActionBar().show();
@@ -377,5 +369,36 @@ public class WowCamera extends AppCompatActivity {
             cropImageView.setVisibility(View.GONE);
         }
     }
+    
+    @Override
+    protected void onStart() {
+        super.onStart();
+        camera.onStart();
+    }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        camera.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        camera.onPause();
+        super.onPause();
+    }
+
+    @Override
+    protected void onStop() {
+        camera.onStop();
+        super.onStop();
+    }
+
+    /*
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        camera.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    }
+    */
 }

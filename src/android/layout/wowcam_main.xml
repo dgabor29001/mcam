@@ -38,7 +38,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <!--Camera-->
+        <!-- Old Camera
         <com.flurgle.camerakit.CameraView
             xmlns:camerakit="http://schemas.android.com/apk/res-auto"
             android:id="@+id/camera"
@@ -47,6 +47,19 @@
             camerakit:ckFocus="continuous"
             camerakit:ckFlash="auto"
             android:adjustViewBounds="true" />
+            -->
+
+        <!--Camera-->
+        <com.camerakit.CameraKitView
+            android:id="@+id/camera"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:keepScreenOn="true"
+            app:camera_flash="auto"
+            app:camera_facing="back"
+            app:camera_focus="continuous"
+            app:camera_permissions="camera" />
 
         <!--Cropper-->
         <com.theartofdev.edmodo.cropper.CropImageView
