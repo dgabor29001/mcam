@@ -623,8 +623,8 @@ public class CameraLauncher extends CordovaPlugin implements MediaScannerConnect
         } else {
             throw new IllegalStateException();
         }
-
-        this.cleanup(FILE_URI, this.imageUri.getFileUri(), galleryUri, bitmap);
+        if(this.useNativeCamera)
+            this.cleanup(FILE_URI, this.imageUri.getFileUri(), galleryUri, bitmap);
         bitmap = null;
     }
 
@@ -1001,7 +1001,7 @@ public class CameraLauncher extends CordovaPlugin implements MediaScannerConnect
                 // Generate a temporary file
                 String timeStamp = new SimpleDateFormat(TIME_FORMAT).format(new Date());
                 String fileName = "IMG_" + timeStamp + (this.encodingType == JPEG ? JPEG_EXTENSION : PNG_EXTENSION);
-                localFile = new File(getTempDirectoryPath() + fileName);
+                localFile = new File(getTempDirectoryPath() + "/" + fileName);
                 galleryUri = Uri.fromFile(localFile);
                 writeUncompressedImage(fileStream, galleryUri);
                 try {
@@ -1222,6 +1222,8 @@ public class CameraLauncher extends CordovaPlugin implements MediaScannerConnect
         // Clean up initial camera-written image file.
         (new File(FileHelper.stripFileProtocol(oldImage.toString()))).delete();
 
+        this.refreshGallery(oldImage);
+           
         checkForDuplicateImage(imageType);
         // Scan for the gallery to update pic refs in gallery
         if (this.saveToPhotoAlbum && newImage != null) {
