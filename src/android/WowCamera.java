@@ -125,7 +125,7 @@ public class WowCamera extends AppCompatActivity {
 
                     //if()
 
-                    File file = new File(getExternalFilesDir(Environment.DIRECTORY_PICTURES),
+                    File file = new File(getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES),
                             fotoName + formatteDate + ".jpg");
 
                     Boolean res = false;
@@ -344,6 +344,7 @@ public class WowCamera extends AppCompatActivity {
                             intent.setData(Uri.fromFile(new File(img)));
                             setResult(Activity.RESULT_OK, intent);
                         } catch (Exception e){
+                            e.printStackTrace();
                             setResult(Activity.RESULT_CANCELED, new Intent());
                         }
                         finish();
