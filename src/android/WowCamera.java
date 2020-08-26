@@ -125,8 +125,7 @@ public class WowCamera extends AppCompatActivity {
 
                     //if()
 
-                    File file = new File(getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES),
-                            fotoName + formatteDate + ".jpg");
+                    File file = new File(getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES) + "/" + fotoName + formatteDate + ".jpg");
 
                     Boolean res = false;
 
