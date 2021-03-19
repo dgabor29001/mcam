@@ -35,6 +35,7 @@ import android.media.ExifInterface;
 import android.media.MediaScannerConnection;
 import android.media.MediaScannerConnection.MediaScannerConnectionClient;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
@@ -93,6 +94,7 @@ public class CameraLauncher extends CordovaPlugin implements MediaScannerConnect
     private static final String GET_All = "Get All";
     private static final String CROPPED_URI_KEY = "croppedUri";
     private static final String IMAGE_URI_KEY = "imageUri";
+  private static final String IMAGE_FILE_PATH_KEY = "imageFilePath";
 
     private static final String TAKE_PICTURE_ACTION = "takePicture";
 
@@ -486,7 +488,7 @@ public class CameraLauncher extends CordovaPlugin implements MediaScannerConnect
              }
            }
 
-           this.imageUri = new CordovaUri(intent.getData());//intent.getData();
+           this.imageUri = new CordovaUri(intent.getData()).getFileUri();//intent.getData();
 
          }
         // Create an ExifHelper to save the exif data that is lost during compression
@@ -615,7 +617,7 @@ public class CameraLauncher extends CordovaPlugin implements MediaScannerConnect
             throw new IllegalStateException();
         }
         if(this.useNativeCamera)
-            this.cleanup(FILE_URI, this.imageUri.getFileUri(), galleryUri, bitmap);
+            this.cleanup(FILE_URI, this.imageUri, galleryUri, bitmap);
         bitmap = null;
     }
 
@@ -1242,7 +1244,7 @@ public class CameraLauncher extends CordovaPlugin implements MediaScannerConnect
         (new File(FileHelper.stripFileProtocol(oldImage.toString()))).delete();
 
         this.refreshGallery(oldImage);
-           
+
         checkForDuplicateImage(imageType);
         // Scan for the gallery to update pic refs in gallery
         if (this.saveToPhotoAlbum && newImage != null) {

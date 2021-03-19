@@ -42,6 +42,7 @@ import com.camerakit.CameraKitView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.theartofdev.edmodo.cropper.CropImageView;
 
+import static android.os.Environment.getExternalStoragePublicDirectory;
 import static com.camerakit.CameraKit.FLASH_AUTO;
 import static com.camerakit.CameraKit.FLASH_OFF;
 import static com.camerakit.CameraKit.FLASH_ON;
